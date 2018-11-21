@@ -12297,25 +12297,68 @@ using namespace std;
 //}
 
 
+//
+//#include <windows.h>
+//
+//int main()
+//{
+//	HANDLE hMutex = INVALID_HANDLE_VALUE;
+//	hMutex = CreateMutex(
+//	           NULL,
+//	           FALSE,
+//	           L"MyMutex"
+//	         );
+//
+//	if (hMutex == INVALID_HANDLE_VALUE)
+//	{
+//		::MessageBox(NULL, L"Invalid Mutex Handle", L"TRUE", MB_OK | MB_TOPMOST);
+//	}
+//
+//
+//
+//
+//
+//	return 0;
+//}
 
-#include <windows.h>
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int FindSecondMaxFromArray(int arr[], int len)
+{
+	int num1 = 0, num2 = 0;
+
+	for (int i = 0; i < len; i++)
+	{
+		if (arr[i] > num1)
+		{
+			num2 = num1;
+			num1 = arr[i];
+
+		}
+		else if (arr[i] > num2)
+		{
+			num2 = arr[i];
+		}
+	}
+
+	cout << "First largest no. is : " << num1 << endl;
+	cout << "Second largest no. is : " << num2 << endl;
+
+	return num2;
+}
 
 int main()
 {
-	HANDLE hMutex = INVALID_HANDLE_VALUE;
-	hMutex = CreateMutex(
-	           NULL,
-	           FALSE,
-	           L"MyMutex"
-	         );
+	int arr[] = {4, 98, 8, 6, 66, 74, 6, 8, 6, 5, 5, 7, 8, 9, 44, 8, 94, 55, 47, 8, 8, 9, 47};
 
-	if (hMutex == INVALID_HANDLE_VALUE)
-	{
-		::MessageBox(NULL, L"Invalid Mutex Handle", L"TRUE", MB_OK | MB_TOPMOST);
-	}
+	int n = sizeof(arr) / sizeof(arr[0]);
 
-
-
+	FindSecondMaxFromArray(arr, n);
 
 
 	return 0;
